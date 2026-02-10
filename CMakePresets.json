@@ -1,0 +1,14 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "build/RelWithDebInfo/generators/CMakePresets.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "dev-rel",
+            "displayName": "Release with Debug Info (Clang 21)",
+            "description": "Standard development build using Clang 21 and LLD",
+            "inherits": [
+                "base",
+                "conan-relwithdebinfo"
+            ],
+            "binaryDir": "${sourceDir}/build/RelWithDebInfo",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/RelWithDebInfo/generators/conan_toolchain.cmake"
+            }
+        },
+        {
+            "name": "dev-debug",
+            "displayName": "Debug (Clang 21)",
+            "description": "Pure Debug build",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "dev-rel",
+            "configurePreset": "dev-rel"
+        },
+        {
+            "name": "dev-debug",
+            "configurePreset": "dev-debug"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "dev-rel",
+            "configurePreset": "dev-rel"
+        },
+        {
+            "name": "dev-debug",
+            "configurePreset": "dev-debug"
+        }
+    ]
+}
